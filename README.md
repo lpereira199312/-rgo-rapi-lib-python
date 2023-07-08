@@ -15,8 +15,8 @@ This library must meet some requirements, see the list below:
 ```python
 import rapi
 
-apikey={sua api}
-secretkey={sua secret key}
+apikey={your-api-key}
+secretkey={your-secret-key}
 
 # metodo post get price for get snapshot in exchange binance for currency usdt 
 
