@@ -1,7 +1,7 @@
 import rapi
 
-apikey="sua api"
-secretkey="sua secret key"
+apikey={sua api}
+secretkey={sua secret key}
 
 # metodo post get price for get snapshot in exchange binance for currency usdt 
 
