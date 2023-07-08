@@ -38,7 +38,7 @@ def request(method,path,data):
     if method == 'get':
         signature = generate_signature(secret_key,data)
         headers['X-RTN-SIGNATURE']=f'{signature}'
-        response = requests.get( headers=headers, verify=False)
+        response = requests.get(url, headers=headers, verify=False)
         return response
     if method == 'post':
         content = data
@@ -46,5 +46,5 @@ def request(method,path,data):
         signature = generate_signature(secret_key,data)
         headers['X-RTN-SIGNATURE'] = f'{signature}'
         headers['Content-type'] = 'application/x-www-from-urlencoded'
-        response = requests.post(data=data,headers=headers, verify=False)
+        response = requests.post(url, data=data,headers=headers, verify=False)
         return response
