@@ -13,6 +13,8 @@ This library must meet some requirements, see the list below:
 ## Usage
 
 ```python
+import rapi
+
 apikey={sua api}
 secretkey={sua secret key}
 
