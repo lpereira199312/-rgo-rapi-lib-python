@@ -35,7 +35,7 @@ def request(method,path,data):
         'X-RTN-KEY': f'{api_key}',
         'X-RTN-SIGNATURE': '',
     }
-    if method == 'get':
+    if method == 'GET':
         try:
             signature = generate_signature(secret_key,data)
             headers['X-RTN-SIGNATURE']=f'{signature}'
@@ -44,7 +44,7 @@ def request(method,path,data):
         except:
             response = "invalid request verify format (method,path,data)"
             return response
-    elif method == 'post':
+    elif method == 'POST':
         try:
             data = format_data(data)
             signature = generate_signature(secret_key,data)
@@ -56,5 +56,5 @@ def request(method,path,data):
             response = "invalid request verify format (method,path,{data})"
             return response
     else:
-        response = "error invalid method use 'get' or 'post'"
+        response = "error invalid method use 'GET' or 'POST'"
         return response
