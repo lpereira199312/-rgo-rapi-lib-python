@@ -36,15 +36,25 @@ def request(method,path,data):
         'X-RTN-SIGNATURE': '',
     }
     if method == 'get':
-        signature = generate_signature(secret_key,data)
-        headers['X-RTN-SIGNATURE']=f'{signature}'
-        response = requests.get(url, headers=headers, verify=False)
-        return response
-    if method == 'post':
-        content = data
-        data = format_data(data)
-        signature = generate_signature(secret_key,data)
-        headers['X-RTN-SIGNATURE'] = f'{signature}'
-        headers['Content-type'] = 'application/x-www-from-urlencoded'
-        response = requests.post(url, data=data,headers=headers, verify=False)
+        try:
+            signature = generate_signature(secret_key,data)
+            headers['X-RTN-SIGNATURE']=f'{signature}'
+            response = requests.get(url, headers=headers, verify=False)
+            return response
+        except:
+            response = "invalid request verify format (method,path,data)"
+            return response
+    elif method == 'post':
+        try:
+            data = format_data(data)
+            signature = generate_signature(secret_key,data)
+            headers['X-RTN-SIGNATURE'] = f'{signature}'
+            headers['Content-type'] = 'application/x-www-from-urlencoded'
+            response = requests.post(url, data=data,headers=headers, verify=False)
+            return response
+        except:
+            response = "invalid request verify format (method,path,{data})"
+            return response
+    else:
+        response = "error invalid method use 'get' or 'post'"
         return response
