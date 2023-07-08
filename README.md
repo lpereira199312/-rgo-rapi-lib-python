@@ -12,17 +12,22 @@ This library must meet some requirements, see the list below:
 
 ## Usage
 
-import rapi
+```python
+apikey={sua api}
+secretkey={sua secret key}
 
-api_key = "public key"
+# metodo post get price for get snapshot in exchange binance for currency usdt 
 
-secret_key = "secret key"
+rapi.keys(apikey,secretkey)
+r = rapi.request("post","/api/v2/snapshots/cost",{'exchange':'binance','currency':'USDT'})
+print(r.text)
 
-rapi.keys(api_key,secret_key)
+# metodo get get assets in your watchlist
 
-rapi.request(method,path,data)
-
-exemple in test.py
+rapi.keys(apikey,secretkey)
+r =rapi.request("get","/api/v2/watchlist/assets","")
+print(r.text)
+```
 
 ## Considerations
 This library is under development and may change over time. The integrity of existing methods will be maintained to avoid compatibility issues in the future.
