@@ -27,7 +27,7 @@ def format_data (data):
     return data
 
 #def request contruct and process request process
-def request(metodo,path,data):
+def request(method,path,data):
     requests.packages.urllib3.disable_warnings()
     base_url = "https://api.reactioon.com:1357"
     url = base_url + path
@@ -35,12 +35,12 @@ def request(metodo,path,data):
         'X-RTN-KEY': f'{api_key}',
         'X-RTN-SIGNATURE': '',
     }
-    if metodo == 'get':
+    if method == 'get':
         signature = generate_signature(secret_key,data)
         headers['X-RTN-SIGNATURE']=f'{signature}'
         response = requests.get( headers=headers, verify=False)
         return response
-    if metodo == 'post':
+    if method == 'post':
         content = data
         data = format_data(data)
         signature = generate_signature(secret_key,data)
